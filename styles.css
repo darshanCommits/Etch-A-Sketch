@@ -15,7 +15,8 @@ body {
 }
 
 main {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 #device {
@@ -50,4 +51,21 @@ main {
   display: flex;
   flex-direction: column;
   margin: 10px;
+}
+
+.left {
+    /* position: relative;
+    right:  4rem; */
+
+    
+    align-self: center;
+}
+
+.right {
+    align-self: center;
+}
+
+.sliderOfDensity {
+    width: 8rem;
+    
 }
