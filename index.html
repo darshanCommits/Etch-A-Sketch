@@ -8,31 +8,53 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    
     <header>
       <h1>Etch-A-Sketch</h1>
     </header>
 
-    <main>
+    <div id="game">
 
       <div class="left">
-        <button class="mode sliderOfDensity"></button>
-        <button class="mode reset"></button>
-        <button class="mode "></button>
+        <div class="btn density">
+          <button class="mode sliderOfDensity"></button>
+          <h2>Density</h2>
+        </div>
+
+        <div class="btn reset">
+          <button class="mode reset"></button>
+          <h2>Reset</h2>
+        </div>
+
+        <div class="btn save">
+          <button class="mode"></button>
+          <h2>Save!</h2>
+        </div>
       </div>
 
-      <div id="device">
-        <div class="container" id="board"></div>
-      </div>
+      <main>
+        <div id="device">
+          <div class="container" id="board"></div>
+        </div>
+      </main>
 
       <div class="right">
-        <button class="color "></button>
-        <button class="color"></button>
-        <button class="color"></button>
-      </div>
+        <div class="btn bw">
+          <button class="color"></button>
+          <h2>B&W</h2>
+        </div>
 
-    </main>
-    
+        <div class="btn lgbtq">
+          <button class="color"></button>
+          <h2>LGBTQ+</h2>
+        </div>
+
+        <div class="btn eraser">
+          <button class="color"></button>
+          <h2>Eraser</h2>
+        </div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
