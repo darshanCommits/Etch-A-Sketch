@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
 body {
   font-size: 1.3rem;
   font-family: "spline sans mono";
@@ -17,6 +23,7 @@ body {
 #game {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-top: 50px;
 }
 
 #device {
@@ -28,7 +35,7 @@ body {
   background-color: #e96479;
 }
 
-@media only screen and (orientation: portrait) {
+/* @media only screen and (orientation: portrait) {
 
   #device {
 
@@ -37,7 +44,7 @@ body {
 
   }
 
-}
+} */
 
 .container {
   display: grid;
@@ -103,4 +110,33 @@ body {
 
 .left .btn {
   flex-direction: row-reverse;
+}
+
+@media (max-width:450px) {
+  #game {
+    display: block;
+    margin-top: 50px;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+  }
+
+  .btn {
+    padding: 0 20px;
+    display: block;
+  }
+
+  #device {
+    width: 100%;
+  }
+
 }
