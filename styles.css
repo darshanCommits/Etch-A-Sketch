@@ -1,12 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
-* {
-  margin: 0%;
-  padding: 0%;
-  box-sizing: border-box;
-}
-
 body {
+  /* height: 100dvh; */
   font-size: 1.3rem;
   font-family: "spline sans mono";
   margin: 0;
@@ -15,7 +10,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
   background-color: #4d455d;
   color: #f5e9cf;
 }
@@ -30,21 +24,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  aspect-ratio: 16/9;
   border: 1rem solid #7db9b6;
   background-color: #e96479;
+
 }
-
-/* @media only screen and (orientation: portrait) {
-
-  #device {
-
-    aspect-ratio: 9/16;
-    flex-direction: row;
-
-  }
-
-} */
 
 .container {
   display: grid;
@@ -53,12 +36,6 @@ body {
 
 .container div {
   border: 0.5px rgb(173, 173, 173) solid;
-}
-
-.mode {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
 }
 
 .color,
@@ -71,6 +48,11 @@ body {
   border-radius: 50%;
   /* background-color: #ff4151; */
 }
+.mode {
+  flex-direction: column;
+  margin: 10px;
+}
+
 
 .left {
   /* position: relative;
@@ -87,10 +69,6 @@ body {
 
   align-self: center;
   justify-self: center;
-}
-
-.sliderOfDensity {
-  /* width: 8rem; */
 }
 
 .btn {
@@ -112,16 +90,28 @@ body {
   flex-direction: row-reverse;
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
+
+  body {
+  /* height: max-content;
+  overflow: scroll; */
+
+  }
+
   #game {
     display: block;
     margin-top: 50px;
+    aspect-ratio: 9/16;
+  }
+
+  main {
+    margin: 0 40px;
   }
 
   .left {
     display: flex;
     justify-content: center;
-    margin: 40px auto;
+    margin: -20px auto 20px;
   }
 
   .right {
@@ -135,8 +125,5 @@ body {
     display: block;
   }
 
-  #device {
-    width: 100%;
-  }
 
 }
