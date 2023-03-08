@@ -1,23 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  /* height: 100dvh; */
   font-size: 1.3rem;
   font-family: "spline sans mono";
-  margin: 0;
-  padding: 0.5rem;
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #4d455d;
   color: #f5e9cf;
+  height: 100dvh;
 }
 
 #game {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 50px;
+  align-items: center;
+  justify-items: center;
 }
 
 #device {
@@ -26,104 +31,55 @@ body {
   align-items: center;
   border: 1rem solid #7db9b6;
   background-color: #e96479;
-
+  width: 750px;
+  height: 450px;
 }
 
 .container {
   display: grid;
   padding: 1rem;
+  width: 100%;
+  height: 100%;
 }
 
 .container div {
   border: 0.5px rgb(173, 173, 173) solid;
 }
 
-.color,
-.mode {
+/* Options & Buttons */
+
+.options {
+  margin: 2rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+}
+
+[class*="btn-"] {
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
-  margin: 10px;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  /* background-color: #ff4151; */
-}
-.mode {
-  flex-direction: column;
-  margin: 10px;
 }
 
-
-.left {
-  /* position: relative;
-    right:  4rem; */
-  grid-column: 1;
-  z-index: 1;
-
-  justify-self: center;
-  align-self: center;
-}
-
-.right {
-  grid-column: 3;
-
-  align-self: center;
-  justify-self: center;
-}
-
-.btn {
-  padding: 0 2rem;
-  display: flex;
-  font-size: 1rem;
-}
-
-.bw .color {
+.bw .btn-color {
   background-color: #4d455d;
 }
 
-.lgbtq .color {
+.lgbtq .btn-color {
   background-color: #fbda61;
   background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
 }
 
-.left .btn {
+.left .options {
   flex-direction: row-reverse;
 }
 
-@media (max-width: 450px) {
 
-  body {
-  /* height: max-content;
-  overflow: scroll; */
-
+@media screen and (max-width : 450px){
+  #device {
+    width: 250px;
   }
-
-  #game {
-    display: block;
-    margin-top: 50px;
-    aspect-ratio: 9/16;
-  }
-
-  main {
-    margin: 0 40px;
-  }
-
-  .left {
-    display: flex;
-    justify-content: center;
-    margin: -20px auto 20px;
-  }
-
-  .right {
-    display: flex;
-    justify-content: center;
-    margin: 30px auto;
-  }
-
-  .btn {
-    padding: 0 20px;
-    display: block;
-  }
-
-
 }
