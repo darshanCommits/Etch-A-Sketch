@@ -1,38 +1,33 @@
 const container = document.querySelector("#board");
 const phone = window.matchMedia("only screen and (max-width : 600px)");
 
-let div, row, col;
+let item, row, col, density;
 
-let density = 0;
-
-function changeDensity() {
-  function deleteOldGrid() {
-    document
-      .querySelectorAll(".grid-item")
-      .forEach((e) => e.parentNode.removeChild(e));
-  }
-  deleteOldGrid();
-  return density <= 4 ? ++density : (density = 1);
+function deleteOldGrid() {
+  document
+    .querySelectorAll(".grid-item")
+    .forEach((e) => e.parentNode.removeChild(e));
 }
 
 function makeGrid() {
-  density = changeDensity();
+  deleteOldGrid();
+
+  density = density <= 4 ? ++density : (density = 1);
 
   col = phone.matches ? 9 * density : 16 * density; //18 for phone else 32
   row = phone.matches ? 16 * density : 9 * density; //32 for phone else 18
 
   container.style.gridTemplateColumns = `repeat(${col}, 1fr`;
-  // container.style.gridTemplateColumns = `repeat(${row}, 1fr`;
 
   for (let i = 1; i <= row * col; i++) {
-    div = document.createElement("div");
-    div.style.width = "1em";
-    div.style.height = "1em";
+    item = document.createElement("cell");
 
-    div.style.backgroundColor = "#F5E9CF";
-    div.classList.add("grid-item");
+    item.style.maxWidth = "50px";
+    item.style.maxHeight = "50px";
+    
+    item.classList.add("grid-item");
 
-    container.appendChild(div);
+    container.appendChild(item);
   }
 }
 

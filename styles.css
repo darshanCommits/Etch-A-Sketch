@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
+:root {
+  --gameWidth: 55rem;
+  --gameHeight: 29rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +23,7 @@ body {
 }
 
 #game {
-  margin-top: 40px;
+  margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -31,19 +36,19 @@ body {
   align-items: center;
   border: 1rem solid #7db9b6;
   background-color: #e96479;
-  width: 750px;
-  height: 450px;
+  width: var(--gameWidth);
+  height: var(--gameHeight);
 }
 
 .container {
   display: grid;
-  padding: 1rem;
-  width: 100%;
-  height: 100%;
+  width: calc(var(--gameWidth) - 9%);
+  height: calc(var(--gameHeight) - 12%);
 }
 
-.container div {
-  border: 0.5px rgb(173, 173, 173) solid;
+.grid-item {
+  border: 0.2px rgb(197, 197, 197) solid;
+  background-color: whitesmoke;
 }
 
 /* Options & Buttons */
@@ -77,8 +82,7 @@ body {
   flex-direction: row-reverse;
 }
 
-
-@media screen and (max-width : 450px){
+@media screen and (max-width: 450px) {
   #device {
     width: 250px;
   }
