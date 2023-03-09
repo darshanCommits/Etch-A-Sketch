@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
 :root {
-  --gameWidth: 55rem;
-  --gameHeight: 29rem;
+  --gameWidth: 50rem;
+  --gameHeight: 27rem;
+}
+
+header {
+  font-size: 1.3rem;
+  margin: 2%;
 }
 
 * {
@@ -11,19 +16,17 @@
 }
 
 body {
-  font-size: 1.3rem;
   font-family: "spline sans mono";
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
   background-color: #4d455d;
   color: #f5e9cf;
-  height: 100dvh;
+  /* height: 100dvh; */
+  overflow-x: hidden;
 }
 
 #game {
-  margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -36,6 +39,7 @@ body {
   align-items: center;
   border: 1rem solid #7db9b6;
   background-color: #e96479;
+
   width: var(--gameWidth);
   height: var(--gameHeight);
 }
@@ -83,7 +87,42 @@ body {
 }
 
 @media screen and (max-width: 450px) {
+
+
+
+  header {
+    margin-top: 3rem;
+  }
+
+  #game {
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: row !important;
+    margin: 3rem 0;
+  }
+
+  .left .options {
+    font-size: 0.8rem;
+  }
+
+  .options {
+    margin: 1rem !important;
+    flex-direction: column !important;
+  }
+
+  [class*="btn-"] {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem;
+  }
+
   #device {
     width: 250px;
+    height: 400px;
   }
 }
