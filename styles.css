@@ -98,7 +98,8 @@ body {
 
   #device {
     border: 0.6rem solid #7db9b6;
-    width: 80dv;
+    width: 80vw;
+    width: 80dvw;
     height: 500px;
   }
 
