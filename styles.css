@@ -23,7 +23,6 @@ body {
   background-color: #4d455d;
   color: #f5e9cf;
   /* height: 100dvh; */
-  overflow-x: hidden;
 }
 
 #game {
@@ -86,10 +85,7 @@ body {
   flex-direction: row-reverse;
 }
 
-@media screen and (max-width: 450px) {
-
-
-
+@media screen and (max-width: 600px) {
   header {
     margin-top: 3rem;
   }
@@ -99,18 +95,25 @@ body {
     grid-template-columns: auto;
   }
 
+  #device {
+    border: 0.6rem solid #7db9b6;
+    width: 250px;
+    height: 400px;
+  }
+
   .left,
   .right {
     display: flex;
     flex-direction: row !important;
-    margin: 3rem 0;
+    margin: 1rem 0 3rem;
   }
 
-  .left .options {
-    font-size: 0.8rem;
+  .container {
+    padding: 3%;
   }
 
   .options {
+    font-size: 0.8rem;
     margin: 1rem !important;
     flex-direction: column !important;
   }
@@ -119,10 +122,5 @@ body {
     width: 2rem;
     height: 2rem;
     margin: 1rem;
-  }
-
-  #device {
-    width: 250px;
-    height: 400px;
   }
 }
