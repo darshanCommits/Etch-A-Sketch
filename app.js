@@ -22,9 +22,6 @@ function makeGrid() {
 
   for (let i = 1; i <= row * col; i++) {
     item = document.createElement("cell");
-
-
-
     item.classList.add("grid-item");
 
     container.appendChild(item);
