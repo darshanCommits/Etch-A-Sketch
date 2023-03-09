@@ -5,6 +5,7 @@
   --gameHeight: 27rem;
 }
 
+
 header {
   font-size: 1.3rem;
   margin: 2%;
@@ -22,7 +23,7 @@ body {
   justify-items: center;
   background-color: #4d455d;
   color: #f5e9cf;
-  /* height: 100dvh; */
+  overflow-y: scroll;
 }
 
 #game {
@@ -97,20 +98,31 @@ body {
 
   #device {
     border: 0.6rem solid #7db9b6;
-    width: 250px;
-    height: 400px;
+    width: 80dvw;
+    height: 500px;
   }
 
   .left,
   .right {
     display: flex;
     flex-direction: row !important;
-    margin: 1rem 0 3rem;
+  }
+
+  .left {
+    margin-bottom: 1rem;
+  }
+
+  .right {
+    margin-top: 1rem;
   }
 
   .container {
     padding: 3%;
+    width: calc(var(--gameWidth) - 9%);
+    height: calc(var(--gameHeight) + 8% );
   }
+
+
 
   .options {
     font-size: 0.8rem;

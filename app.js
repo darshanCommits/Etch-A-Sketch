@@ -18,13 +18,13 @@ function makeGrid() {
   row = phone.matches ? 16 * density : 9 * density; //32 for phone else 18
 
   container.style.gridTemplateColumns = `repeat(${col}, 1fr`;
+  // container.style.gridTemplateRows = `repeat(${row}, 1fr`;
 
   for (let i = 1; i <= row * col; i++) {
     item = document.createElement("cell");
 
-    item.style.maxWidth = "50px";
-    item.style.maxHeight = "50px";
-    
+
+
     item.classList.add("grid-item");
 
     container.appendChild(item);
