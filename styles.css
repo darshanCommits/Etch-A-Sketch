@@ -98,7 +98,7 @@ body {
 
   #device {
     border: 0.6rem solid #7db9b6;
-    width: 80dvw;
+    width: 80dv;
     height: 500px;
   }
 
@@ -121,8 +121,6 @@ body {
     width: calc(var(--gameWidth) - 9%);
     height: calc(var(--gameHeight) + 8% );
   }
-
-
 
   .options {
     font-size: 0.8rem;
