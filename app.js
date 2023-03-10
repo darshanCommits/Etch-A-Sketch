@@ -17,12 +17,11 @@ function makeGrid() {
   row = phone.matches ? 16 * density : 9 * density; //32 for phone else 18
 
   container.style.gridTemplateColumns = `repeat(${col}, 1fr`;
-  // container.style.gridTemplateRows = `repeat(${row}, 1fr`;
 
   for (let i = 1; i <= row * col; i++) {
     item = document.createElement("cell");
 
-    item.classList.add("grid-item", `grid-item-${i}`);
+    item.classList.add("grid-item");
 
     container.appendChild(item);
   }
@@ -31,9 +30,14 @@ function makeGrid() {
 makeGrid();
 
 function changeColor(color) {
-  addEventListener("mouseover", (event) => {
-    if (event.target.classList.contains("grid-item")) {
-      event.target.style.background = color;
+  addEventListener("mouseover", (e) => {
+    if (e.target.classList.contains("grid-item")) {
+      e.target.style.background = color;
+    }
+  });
+  addEventListener("touchmove", (e) => {
+    if (e.target.classList.contains("grid-item")) {
+      e.target.style.background = color;
     }
   });
 }
@@ -51,7 +55,6 @@ document.querySelector(".right").addEventListener("mousedown", (e) => {
       color = `hsl(0, 0%, ${random(100)}%)`;
       changeColor(color);
     }, 100);
-
   }
 
   if (e.target.classList.contains("lgbt")) {
