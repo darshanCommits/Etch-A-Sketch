@@ -1,7 +1,6 @@
+let item, row, col, density;
 const container = document.querySelector(".container");
 const phone = window.matchMedia("only screen and (max-width : 600px)");
-
-let item, row, col, density;
 
 function deleteOldGrid() {
   document
@@ -32,9 +31,39 @@ function makeGrid() {
 makeGrid();
 
 function changeColor(color) {
-	addEventListener("mouseover", (event) => {
-		if (event.target.classList.contains("grid-item")) {
-			event.target.style.backgroundColor = color;
-		}
-	});
+  addEventListener("mouseover", (event) => {
+    if (event.target.classList.contains("grid-item")) {
+      event.target.style.background = color;
+    }
+  });
 }
+
+function random(i) {
+  return Math.floor(Math.random() * i);
+}
+
+let color;
+
+document.querySelector(".right").addEventListener("mousedown", (e) => {
+  if (e.target.classList.contains("bw")) {
+    setInterval(() => {
+      console.log(1);
+      color = `hsl(0, 0%, ${random(100)}%)`;
+      changeColor(color);
+    }, 100);
+
+  }
+
+  if (e.target.classList.contains("lgbt")) {
+    setInterval(() => {
+      console.log(2);
+      color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+      changeColor(color);
+    }, 100);
+  }
+
+  if (e.target.classList.contains("eraser")) {
+    console.log(e.target);
+    changeColor("whitesmoke");
+  }
+});

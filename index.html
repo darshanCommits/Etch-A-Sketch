@@ -13,10 +13,12 @@
     </header>
 
     <div id="game">
-      
       <div class="left">
         <div class="options density">
-          <button onclick="makeGrid()" class="btn-mode sliderOfDensity"></button>
+          <button
+            onclick="makeGrid()"
+            class="btn-mode sliderOfDensity"
+          ></button>
           <h2>Density</h2>
         </div>
 
@@ -32,26 +34,25 @@
       </div>
 
       <div id="device">
-        <div class="container" ></div>
+        <div class="container"></div>
       </div>
 
       <div class="right">
-        <div class="options bw">
-          <button onclick="changeColor('#333')" class="btn-color"></button>
+        <div class="options">
+          <button class="btn-color bw"></button>
           <h2>B&W</h2>
         </div>
 
-        <div class="options lgbtq">
-          <button class="btn-color"></button>
+        <div class="options">
+          <button class="btn-color lgbt"></button>
           <h2>LGBTQ+</h2>
         </div>
 
-        <div class="options eraser">
-          <button class="btn-color"></button>
+        <div class="options">
+          <button class="btn-color eraser"></button>
           <h2>Eraser</h2>
         </div>
       </div>
-
     </div>
 
     <script src="app.js"></script>
