@@ -1,4 +1,4 @@
-const container = document.querySelector("#board");
+const container = document.querySelector(".container");
 const phone = window.matchMedia("only screen and (max-width : 600px)");
 
 let item, row, col, density;
@@ -23,12 +23,18 @@ function makeGrid() {
   for (let i = 1; i <= row * col; i++) {
     item = document.createElement("cell");
 
-
-
-    item.classList.add("grid-item");
+    item.classList.add("grid-item", `grid-item-${i}`);
 
     container.appendChild(item);
   }
 }
 
 makeGrid();
+
+function changeColor(color) {
+	addEventListener("mouseover", (event) => {
+		if (event.target.classList.contains("grid-item")) {
+			event.target.style.backgroundColor = color;
+		}
+	});
+}
