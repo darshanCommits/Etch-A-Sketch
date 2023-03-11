@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --gameWidth: 55rem;
+  --gameHeight: 30rem;
+}
+
+header {
+  font-size: 1.3rem;
+  margin: 2%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "spline sans mono";
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  color: #f5e9cf;
+  overflow-y: scroll;
+
+  background: linear-gradient(to right, #F0A500, #FF69B4, #098db9, #17be6b, #caae11);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+
+}
+
+/* for background color */
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+#game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+#device {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--gameWidth);
+  height: var(--gameHeight);
+}
+
+.container {
+  display: grid;
+  width: calc(var(--gameWidth) - 9%);
+  height: calc(var(--gameHeight) - 12%);
+}
+
+.grid-item {
+  background-color: whitesmoke;
+}
+
+/* Options & Buttons */
+
+.options {
+  margin: 2rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+}
+
+[class*="btn-"] {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.density {
+  background: rgb(153, 107, 107);
+}
+
+.save {
+  background: #ff4151;
+}
+
+.reset {
+  background: hsl(0, 0%, 26%);
+}
+
+.btn-color.bw {
+  background-color: #5f5f5f;
+}
+
+.btn-color.lgbt {
+  background: #fbda61 linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
+}
+
+.left .options {
+  flex-direction: row-reverse;
+}
+
+/* media queries */
+
+@media screen and (max-width: 600px) {
+  header {
+    margin-top: 3rem;
+  }
+
+  #game {
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto;
+  }
+
+  #device {
+    border: 0.6rem solid #7db9b6;
+    width: 80vw;
+    width: 80dvw;
+    height: 500px;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: row !important;
+  }
+
+  .left {
+    margin-bottom: 1rem;
+  }
+
+  .right {
+    margin-top: 1rem;
+  }
+
+  .container {
+    padding: 3%;
+    width: calc(var(--gameWidth) - 9%);
+    height: calc(var(--gameHeight) + 8%);
+  }
+
+  .options {
+    font-size: 0.8rem;
+    margin: 1rem !important;
+    flex-direction: column !important;
+  }
+
+  [class*="btn-"] {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem;
+  }
+}
