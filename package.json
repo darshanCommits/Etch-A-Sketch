@@ -1,19 +1,14 @@
 {
   "name": "etch-a-sketch",
-  "version": "1.0.0",
-  "description": "Etch A Sketch is a retro grid based drawing system",
-  "main": "index.html",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/greeedPNG/Etch-A-Sketch.git"
-  },
-  "author": "Darshan Kumawat",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/greeedPNG/Etch-A-Sketch/issues"
-  },
-  "homepage": "https://github.com/greeedPNG/Etch-A-Sketch#readme"
+  "devDependencies": {
+    "vite": "^4.1.0"
+  }
 }

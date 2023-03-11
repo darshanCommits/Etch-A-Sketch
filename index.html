@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-A-Sketch</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -14,21 +14,20 @@
 
     <div id="game">
       <div class="left">
-        <div class="options density">
+        <div class="options ">
           <button
-            onclick="makeGrid()"
-            class="btn-mode sliderOfDensity"
+            class="btn-mode density"
           ></button>
           <h2>Density</h2>
         </div>
 
-        <div class="options reset">
+        <div class="options ">
           <button class="btn-mode reset"></button>
           <h2>Reset</h2>
         </div>
 
-        <div class="options save">
-          <button class="btn-mode"></button>
+        <div class="options ">
+          <button class="btn-mode save"></button>
           <h2>Save!</h2>
         </div>
       </div>
@@ -55,6 +54,6 @@
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
