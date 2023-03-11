@@ -35,38 +35,38 @@ function changeColor(color) {
       e.target.style.background = color;
     }
   });
-  addEventListener("touchmove", (e) => {
-    if (e.target.classList.contains("grid-item")) {
-      e.target.style.background = color;
-    }
-  });
 }
 
 function random(i) {
   return Math.floor(Math.random() * i);
 }
 
-let color;
+let color, intervalID;
 
-document.querySelector(".right").addEventListener("mousedown", (e) => {
+function hoverAction(e) {
+  clearInterval(intervalID);
+
   if (e.target.classList.contains("bw")) {
-    setInterval(() => {
+    intervalID = setInterval(() => {
       console.log(1);
       color = `hsl(0, 0%, ${random(100)}%)`;
       changeColor(color);
     }, 100);
-  }
-
-  if (e.target.classList.contains("lgbt")) {
-    setInterval(() => {
+  } else if (e.target.classList.contains("lgbt")) {
+    intervalID = setInterval(() => {
       console.log(2);
       color = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
       changeColor(color);
     }, 100);
-  }
-
-  if (e.target.classList.contains("eraser")) {
+  } else if (e.target.classList.contains("eraser")) {
     console.log(e.target);
     changeColor("whitesmoke");
   }
+}
+
+document.querySelector(".right").addEventListener("mousedown", hoverAction);
+container.addEventListener("mouseenter", hoverAction);
+
+container.addEventListener("mouseleave", () => {
+  clearInterval(intervalID);
 });
