@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
 :root {
-  --gameWidth: 55rem;
-  --gameHeight: 30rem;
+  --gameWidth: rem;
+  --gameHeight: 25rem;
 }
 
 header {
-  font-size: 1.3rem;
-  margin: 2%;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 * {
@@ -21,12 +21,19 @@ body {
   grid-template-rows: auto 1fr;
   justify-items: center;
   color: #f5e9cf;
-  overflow-y: scroll;
-
-  background: linear-gradient(to right, #F0A500, #FF69B4, #098db9, #17be6b, #caae11);
+  margin: 3rem;
+  height: min(80vh, 100vh);
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    #f0a500,
+    #ff69b4,
+    #098db9,
+    #17be6b,
+    #caae11
+  );
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
-
 }
 
 /* for background color */
@@ -43,8 +50,6 @@ body {
   }
 }
 
-
-
 #game {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -56,20 +61,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: var(--gameWidth);
+  /* width: var(--gameWidth); */
   height: var(--gameHeight);
+  aspect-ratio: 16/9;
 }
 
 .container {
   display: grid;
-  width: calc(var(--gameWidth) - 9%);
-  height: calc(var(--gameHeight) - 12%);
+  /* width: calc(var(--gameWidth) - 9%); */
+  height: var(--gameHeight);
+  aspect-ratio: 16/9;
 }
 
 .grid-item {
   background-color: white;
 }
-
 
 /* Options & Buttons */
 
@@ -117,7 +123,8 @@ body {
 
 @media screen and (max-width: 600px) {
   header {
-    margin-top: 3rem;
+    margin: 3rem 0 0 0;
+    font-size: 1.3rem;
   }
 
   #game {
@@ -126,9 +133,13 @@ body {
   }
 
   #device {
-    width: 80vw;
     width: 80dvw;
-    height: 500px;
+  }
+
+  .container {
+    padding: 3%;
+    width: 80dvw;
+    aspect-ratio: 9/16;
   }
 
   .left,
@@ -143,12 +154,6 @@ body {
 
   .right {
     margin-top: 1rem;
-  }
-
-  .container {
-    padding: 3%;
-    width: calc(var(--gameWidth) );
-    height: calc(var(--gameHeight) );
   }
 
   .options {

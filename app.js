@@ -34,7 +34,6 @@ function makeGrid() {
 
 makeGrid();
 
-
 //  creates random number to be used in rgb/hsl values
 
 function random(min, max) {
@@ -88,7 +87,10 @@ container.addEventListener("mouseenter", () => {
   if (isLGBT) {
     intervalID = setInterval(() => {
       // console.log(1);
-      let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(60,80)}%)`;
+      let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(
+        60,
+        80
+      )}%)`;
       changeColor(color);
     }, 250);
   } else if (isBW) {
@@ -105,7 +107,6 @@ container.addEventListener("mouseenter", () => {
 container.addEventListener("mouseleave", () => {
   clearInterval(intervalID);
 });
-
 
 //  reset the grid
 
