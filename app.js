@@ -50,6 +50,16 @@ function changeColor(color) {
       e.target.style.background = color;
     }
   });
+
+  // Add touch event listener for mobile
+  addEventListener("touchmove", (e) => {
+    // Prevent scrolling while drawing
+    e.preventDefault();
+
+    if (e.target.classList.contains("grid-item")) {
+      e.target.style.background = color;
+    }
+  });
 }
 
 //variables for checking which color to use
@@ -64,6 +74,7 @@ function selectFunctionality(event) {
   isBW = false;
   isLGBT = false;
   isEraser = false;
+
 
   if (event.target.classList.contains("bw")) {
     isBW = true;
@@ -81,7 +92,8 @@ document.querySelectorAll(".right button").forEach((button) => {
 //eventListeners to manage drawing state
 let intervalID;
 
-container.addEventListener("mouseenter", () => {
+// Add touch event listeners for mobile
+container.addEventListener("touchstart", () => {
   clearInterval(intervalID);
 
   if (isLGBT) {
@@ -104,7 +116,7 @@ container.addEventListener("mouseenter", () => {
   }
 });
 
-container.addEventListener("mouseleave", () => {
+container.addEventListener("touchend", () => {
   clearInterval(intervalID);
 });
 
