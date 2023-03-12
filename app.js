@@ -1,9 +1,9 @@
 import "./style.css";
 import html2canvas from "html2canvas";
 
-let item, row, col, density;
+let numRow, numCol, density;
 const container = document.querySelector(".container");
-const phone = window.matchMedia("only screen and (max-width : 600px)");
+const phone = window.matchMedia("(max-width : 600px) and (hover : none)");
 
 //functions to manage setting up grid
 
@@ -18,13 +18,13 @@ function makeGrid() {
 
   density = density <= 4 ? ++density : (density = 1);
 
-  col = phone.matches ? 9 * density : 16 * density; //18 for phone else 32
-  row = phone.matches ? 16 * density : 9 * density; //32 for phone else 18
+  numCol = phone.matches ? 9 * density : 16 * density; //18 for phone else 32
+  numRow = phone.matches ? 16 * density : 9 * density; //32 for phone else 18
 
-  container.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+  container.style.gridTemplateColumns = `repeat(${numCol}, 1fr)`;
 
-  for (let i = 1; i <= row * col; i++) {
-    item = document.createElement("cell");
+  for (let i = 1; i <= numRow * numCol; i++) {
+    const item = document.createElement("cell");
 
     item.classList.add("grid-item");
 
@@ -34,16 +34,19 @@ function makeGrid() {
 
 makeGrid();
 
-//functions to manage change in color
 
 //  creates random number to be used in rgb/hsl values
+
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//  main function to change color
+//main function to change color
+
 function changeColor(color) {
-  addEventListener("mouseover", (e) => {
+  console.log(1);
+
+  addEventListener("mousemove", (e) => {
     if (e.target.classList.contains("grid-item")) {
       e.target.style.background = color;
     }
@@ -51,11 +54,13 @@ function changeColor(color) {
 }
 
 //variables for checking which color to use
+
 let isBW = true;
 let isLGBT = false;
 let isEraser = false;
 
-//event selector to set color
+//event listener to check what button is selected
+
 function selectFunctionality(event) {
   isBW = false;
   isLGBT = false;
@@ -74,52 +79,47 @@ document.querySelectorAll(".right button").forEach((button) => {
   button.addEventListener("click", selectFunctionality);
 });
 
-//function to manage drawing state
-
+//eventListeners to manage drawing state
 let intervalID;
 
-function hoverAction(e) {
+container.addEventListener("mouseenter", () => {
   clearInterval(intervalID);
 
   if (isLGBT) {
     intervalID = setInterval(() => {
-      console.log(1);
-      let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(60, 80)}%)`;
+      // console.log(1);
+      let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(60,80)}%)`;
       changeColor(color);
     }, 250);
   } else if (isBW) {
     intervalID = setInterval(() => {
       let color = `hsl(0, 0%, ${random(20, 60)}%)`;
-      console.log(color);
+      // console.log(2);
       changeColor(color);
     }, 250);
   } else if (isEraser) {
     changeColor("white");
   }
-}
-
-//eventListeners to manage drawing state
-
-container.addEventListener("mouseenter", hoverAction);
+});
 
 container.addEventListener("mouseleave", () => {
   clearInterval(intervalID);
 });
 
-//Options
 
 //  reset the grid
+
 document.querySelector(".reset").addEventListener("mousedown", () => {
   density = 0;
   makeGrid();
 });
 
 //  change density
-document.querySelector(".density").addEventListener("mousedown", () => {
-  makeGrid();
-});
+
+document.querySelector(".density").addEventListener("mousedown", makeGrid);
 
 //  download the drawing in jpg format
+
 document.querySelector(".save").addEventListener("mousedown", () => {
   html2canvas(container).then(function (canvas) {
     const link = document.createElement("a");

@@ -70,6 +70,7 @@ body {
   background-color: white;
 }
 
+
 /* Options & Buttons */
 
 .options {
@@ -125,7 +126,6 @@ body {
   }
 
   #device {
-    border: 0.6rem solid #7db9b6;
     width: 80vw;
     width: 80dvw;
     height: 500px;
@@ -147,8 +147,8 @@ body {
 
   .container {
     padding: 3%;
-    width: calc(var(--gameWidth) - 9%);
-    height: calc(var(--gameHeight) + 8%);
+    width: calc(var(--gameWidth) );
+    height: calc(var(--gameHeight) );
   }
 
   .options {
