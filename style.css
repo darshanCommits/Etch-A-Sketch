@@ -3,6 +3,8 @@
 :root {
   --gameWidth: rem;
   --gameHeight: 25rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 header {
@@ -71,6 +73,7 @@ body {
   /* width: calc(var(--gameWidth) - 9%); */
   height: var(--gameHeight);
   aspect-ratio: 16/9;
+  filter: drop-shadow(20px 20px rgba(0, 0, 0, 0.7)) ;
 }
 
 .grid-item {
@@ -86,13 +89,19 @@ body {
   align-items: center;
 }
 
+
+
 [class*="btn-"] {
   margin: 0 10px;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  justify-content: center;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
+  filter: drop-shadow(2px 2px rgba(0, 0, 0, 0.3));
+
 }
 
 .density {
@@ -123,7 +132,7 @@ body {
 
 @media screen and (max-width: 600px) {
   header {
-    margin: 1rem 0 0 0;
+    margin: .5rem 0 0 0;
     font-size: 1.3rem;
   }
 
@@ -168,3 +177,5 @@ body {
     margin: 1rem;
   }
 }
+
+
