@@ -105,13 +105,9 @@ document.addEventListener("DOMContentLoaded", makeGrid);
   button.addEventListener("click", selectFunctionality);
 });
 
-document.querySelector(".density").addEventListener("click", () => {
-  console.log(1);
-  makeGrid();
-});
+document.querySelector(".density").addEventListener("click", makeGrid);
 
 document.querySelector(".reset").addEventListener("click", () => {
-  console.log(2);
   density = 0;
   makeGrid();
 });
@@ -135,7 +131,6 @@ container.addEventListener("mouseleave", () => {
 
 container.addEventListener("touchmove", (e) => {
   e.preventDefault();
-  console.log(4);
   const touch = e.changedTouches[0];
   //client instead of page since it finds relative location(to its parent),
   //instead of the whole document
@@ -148,5 +143,3 @@ container.addEventListener("touchmove", (e) => {
     });
   }
 });
-
-

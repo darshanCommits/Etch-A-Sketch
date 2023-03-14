@@ -20,8 +20,8 @@ body {
   grid-template-rows: auto 1fr;
   justify-items: center;
   color: #f5e9cf;
-  margin: 3rem;
-  height: min(80vh, 100vh);
+  margin: 2rem;
+  height: min(95vh, 100vh);
   overflow: hidden;
   background: linear-gradient(
     to right,
@@ -54,6 +54,8 @@ body {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
+  position: relative;
+  bottom: 1rem;
 }
 
 #device {
@@ -172,12 +174,35 @@ button {
     height: 2rem;
     margin: 1rem;
   }
+
+  footer {
+  grid-template-columns: repeat(4, 1fr);
+  }
+
+  footer span {
+    grid-column: 1/ span 4;
+    width: 100% !important;
+  }
 }
 
-.dot {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
+
+
+footer {
+  margin-top: 0.5rem;
+  display: grid;
+  width: min-content;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  
+}
+
+footer span {
+  width: max-content;
+}
+
+footer a {
+  color: rgb(49, 49, 49);
+  margin: 1rem;
 }
