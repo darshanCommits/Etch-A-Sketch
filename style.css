@@ -22,7 +22,6 @@ body {
   color: #f5e9cf;
   margin: 2rem;
   height: min(93vh, 100vh);
-  overflow: hidden;
   background: linear-gradient(
     to right,
     #f0a500,
@@ -54,8 +53,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
-  position: relative;
-  bottom: 1rem;
+
 }
 
 #device {
@@ -176,9 +174,8 @@ button {
   }
 
   footer {
+
     grid-template-columns: repeat(4, 1fr);
-    position: relative;
-    bottom: 2rem;
   }
 
   footer span {
@@ -193,7 +190,7 @@ button {
 }
 
 footer {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: grid;
   width: min-content;
   grid-template-columns: repeat(5, 1fr);
