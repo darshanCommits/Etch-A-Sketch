@@ -136,12 +136,12 @@ button {
   }
 
   #device {
-    width: 80dvw;
+    width: 80vw;
   }
 
   .container {
     padding: 3%;
-    width: 80dvw;
+    width: 80vw;
     aspect-ratio: 9/16;
   }
 
