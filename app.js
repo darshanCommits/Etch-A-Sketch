@@ -1,5 +1,6 @@
 import "./style.css";
 import html2canvas from "html2canvas";
+console.log(1);
 
 let numRow, numCol, density;
 const container = document.querySelector(".container");
@@ -43,19 +44,7 @@ function random(min, max) {
 //main function to change color
 
 function changeColor(color) {
-  console.log(1);
-
-  addEventListener("mousemove", (e) => {
-    if (e.target.classList.contains("grid-item")) {
-      e.target.style.background = color;
-    }
-  });
-
-  // Add touch event listener for mobile
-  addEventListener("touchmove", (e) => {
-    // Prevent scrolling while drawing
-    e.preventDefault();
-
+  container.addEventListener("mousemove", (e) => {
     if (e.target.classList.contains("grid-item")) {
       e.target.style.background = color;
     }
@@ -70,18 +59,22 @@ let isEraser = false;
 
 //event listener to check what button is selected
 
-function selectFunctionality(event) {
+function selectFunctionality(e) {
   isBW = false;
   isLGBT = false;
   isEraser = false;
+  const short = e.target.classList;
 
-
-  if (event.target.classList.contains("bw")) {
-    isBW = true;
-  } else if (event.target.classList.contains("lgbt")) {
-    isLGBT = true;
-  } else if (event.target.classList.contains("eraser")) {
-    isEraser = true;
+  switch (true) {
+    case short.contains("bw"):
+      isBW = true;
+      break;
+    case short.contains("lgbt"):
+      isLGBT = true;
+    case short.contains("eraser"):
+      isEraser = true;
+    default:
+      break;
   }
 }
 
@@ -90,15 +83,14 @@ document.querySelectorAll(".right button").forEach((button) => {
 });
 
 //eventListeners to manage drawing state
+
 let intervalID;
 
-// Add touch event listeners for mobile
-container.addEventListener("touchstart", () => {
+function selectColor() {
   clearInterval(intervalID);
 
   if (isLGBT) {
     intervalID = setInterval(() => {
-      // console.log(1);
       let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(
         60,
         80
@@ -108,15 +100,16 @@ container.addEventListener("touchstart", () => {
   } else if (isBW) {
     intervalID = setInterval(() => {
       let color = `hsl(0, 0%, ${random(20, 60)}%)`;
-      // console.log(2);
       changeColor(color);
     }, 250);
   } else if (isEraser) {
     changeColor("white");
   }
-});
+}
 
-container.addEventListener("touchend", () => {
+container.addEventListener("mouseenter", selectColor);
+
+container.addEventListener("mouseleave", () => {
   clearInterval(intervalID);
 });
 
@@ -143,3 +136,33 @@ document.querySelector(".save").addEventListener("mousedown", () => {
     link.click();
   });
 });
+
+// phone stuff
+
+// document.addEventListener("touchstart", (e) => {
+//   [...e.changedTouches].forEach((touch) => {
+//     console.log(4);
+//     const dot = document.createElement("div");
+//     dot.classList.add("dot");
+//     //i can now find the location where i touched
+//     dot.style.top = `${touch.pageY}px`;
+//     dot.style.left = `${touch.pageX}px`;
+//     dot.id = touch.identifier;
+//     document.body.append(dot);
+
+//     console.log(dot.style.left);
+//   });
+// });
+
+container.addEventListener("touchmove", (e) => {
+  [...e.changedTouches].forEach((touch) => {
+    e.preventDefault();
+    const top = `${touch.pageX}px`;
+    const left = `${touch.pageY}px`;
+    const duh = document.elementFromPoint(parseFloat(top), parseFloat(left));
+
+    if (duh.classList.contains("grid-item")) 
+      duh.style.background = "red";
+  });
+});
+
