@@ -183,7 +183,7 @@ button {
 
   footer span {
     grid-column: 1 / span 4;
-    width: 100% !important;
+    width: max-content ;
   }
 
   footer a {
@@ -204,7 +204,6 @@ footer {
 
 footer span {
   margin-top: 0.5rem;
-  width: max-content;
   position: relative;
   bottom: 2px;
 }
