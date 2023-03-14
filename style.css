@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
 :root {
-  --gameWidth: rem;
   --gameHeight: 25rem;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 header {
@@ -62,14 +60,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: var(--gameWidth); */
   height: var(--gameHeight);
   aspect-ratio: 16/9;
 }
 
 .container {
   display: grid;
-  /* width: calc(var(--gameWidth) - 9%); */
   height: var(--gameHeight);
   aspect-ratio: 16/9;
   filter: drop-shadow(20px 20px rgba(0, 0, 0, 0.7));

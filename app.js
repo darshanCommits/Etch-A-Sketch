@@ -2,9 +2,14 @@ import "./style.css";
 import html2canvas from "html2canvas";
 
 let numRow, numCol, density;
-const container = document.querySelector(".container");
-const phone = window.matchMedia("(max-width : 600px) and (hover : none)");
+let isBW = true;
+let isLGBT = false;
+let isEraser = false;
+let intervalID;
 
+const container = document.querySelector(".container");
+const fragment = document.createDocumentFragment();
+const phone = window.matchMedia("(max-width : 600px) and (hover : none)");
 
 function makeGrid() {
   container.innerHTML = "";
@@ -14,17 +19,18 @@ function makeGrid() {
   numCol = phone.matches ? 9 * density : 16 * density;
   numRow = phone.matches ? 16 * density : 9 * density;
 
-  container.style.gridTemplateColumns = `repeat(${numCol}, 1fr)`;
+  const colWidth = `repeat(${numCol}, 1fr)`;
+  requestAnimationFrame(() => {
+    container.style.gridTemplateColumns = colWidth;
+  });
 
   for (let i = 1; i <= numRow * numCol; i++) {
-    const item = document.createElement("cell");
-
+    let item = document.createElement("div");
     item.classList.add("grid-item");
-    container.appendChild(item);
+    fragment.appendChild(item);
   }
+  container.appendChild(fragment);
 }
-
-makeGrid();
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -32,15 +38,47 @@ function random(min, max) {
 
 function changeColor(color) {
   container.addEventListener("mousemove", (e) => {
-    if (e.target.classList.contains("grid-item")) {
-      e.target.style.background = color;
+    if (e.target.matches(".grid-item")) {
+      requestAnimationFrame(() => {
+        e.target.style.background = color;
+      });
     }
   });
 }
 
-let isBW = true;
-let isLGBT = false;
-let isEraser = false;
+function selectColor() {
+  if (isLGBT) {
+    intervalID = setInterval(() => {
+      let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(
+        60,
+        80
+      )}%)`;
+      changeColor(color);
+    }, 250);
+  } else if (isBW) {
+    intervalID = setInterval(() => {
+      let color = `hsl(0, 0%, ${random(20, 60)}%)`;
+      changeColor(color);
+    }, 250);
+  } else if (isEraser) {
+    changeColor("white");
+  }
+}
+
+function selectColorForPhone(cell) {
+  if (isLGBT) {
+    let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(
+      60,
+      80
+    )}%)`;
+    cell.style.background = color;
+  } else if (isBW) {
+    let color = `hsl(0, 0%, ${random(20, 60)}%)`;
+    cell.style.background = color;
+  } else if (isEraser) {
+    cell.style.background = "white";
+  }
+}
 
 function selectFunctionality(e) {
   isBW = false;
@@ -56,12 +94,16 @@ function selectFunctionality(e) {
   }
 }
 
-document.querySelectorAll(".right button").forEach((button) => {
+// Events
+
+document.addEventListener("DOMContentLoaded", makeGrid);
+
+[...document.querySelectorAll(".right")].forEach((button) => {
   button.addEventListener("click", selectFunctionality);
 });
 
-document.querySelectorAll(".left button").forEach((button) => {
-  button.addEventListener("click", () => {
+[...document.querySelectorAll(".left")].forEach((button) => {
+  button.addEventListener("click", (e) => {
     let short = e.target.classList;
 
     if (short.contains("reset")) {
@@ -82,61 +124,25 @@ document.querySelectorAll(".left button").forEach((button) => {
   });
 });
 
-let intervalID;
-
-function selectColor() {
-  clearInterval(intervalID);
-
-  if (isLGBT) {
-    intervalID = setInterval(() => {
-      let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(
-        60,
-        80
-      )}%)`;
-      changeColor(color);
-    }, 250);
-  } else if (isBW) {
-    intervalID = setInterval(() => {
-      let color = `hsl(0, 0%, ${random(20, 60)}%)`;
-      changeColor(color);
-    }, 250);
-  } else if (isEraser) {
-    changeColor("white");
-  }
-}
-
 container.addEventListener("mouseenter", selectColor);
 
 container.addEventListener("mouseleave", () => {
   clearInterval(intervalID);
 });
 
-function selectColorForPhone(cell) {
-  if (isLGBT) {
-    let color = `hsl(${random(0, 360)}, ${random(80, 100)}%, ${random(
-      60,
-      80
-    )}%)`;
-    cell.style.background = color;
-  } else if (isBW) {
-    let color = `hsl(0, 0%, ${random(20, 60)}%)`;
-    cell.style.background = color;
-  } else if (isEraser) {
-    cell.style.background = "white";
-  }
-}
-
 container.addEventListener("touchmove", (e) => {
-  console.log(1);
   e.preventDefault();
 
-  [...e.changedTouches].forEach((touch) => {
-    const top = `${touch.pageX}px`;
-    const left = `${touch.pageY}px`;
-    const cell = document.elementFromPoint(parseFloat(top), parseFloat(left));
+  const touch = e.changedTouches[0];
+  //client instead of page since it finds relative location(to its parent),
+  //instead of the whole document
+  const cell = document.elementFromPoint(touch.clientX, touch.clientY);
 
-    if (cell.classList.contains("grid-item")) {
-      selectColorForPhone(cell);
-    }
-  });
+
+  //checks if cell exist and if it does, what is the closest element with grid item class
+  if (cell && cell.closest(".grid-item")) {
+    requestAnimationFrame(() => {
+      selectColorForPhone(cell.closest(".grid-item"));
+    });
+  }
 });
