@@ -21,7 +21,7 @@ body {
   justify-items: center;
   color: #f5e9cf;
   margin: 2rem;
-  height: min(95vh, 100vh);
+  height: min(93vh, 100vh);
   overflow: hidden;
   background: linear-gradient(
     to right,
@@ -127,7 +127,7 @@ button {
 @media screen and (max-width: 600px) {
   header {
     margin: 0.5rem 0 0 0;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   #game {
@@ -176,33 +176,40 @@ button {
   }
 
   footer {
-  grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    bottom: 2rem;
   }
 
   footer span {
-    grid-column: 1/ span 4;
+    grid-column: 1 / span 4;
     width: 100% !important;
   }
+
+  footer a {
+    margin: 1px 1rem;
+  }
+
 }
 
-
-
 footer {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   display: grid;
   width: min-content;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   text-align: center;
   justify-content: center;
-  
 }
 
 footer span {
+  margin-top: 0.5rem;
   width: max-content;
+  position: relative;
+  bottom: 2px;
 }
 
 footer a {
+  margin : 0 0.5rem;
   color: rgb(49, 49, 49);
-  margin: 1rem;
 }
