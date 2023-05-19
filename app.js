@@ -1,6 +1,7 @@
 import "./style.css";
 import html2canvas from "html2canvas";
 
+
 let numRow, numCol, density;
 let isBW = true;
 let isLGBT = false;
